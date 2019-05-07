@@ -80,7 +80,7 @@ PAGE 1 - SEARCH
   </div>
 
   STATE
-    selectedFlight: "flight_id"
+    selectedFlight: {...flightData}
 
   PROPS
     searchResults // array of objects passed down from <Search />
@@ -114,10 +114,10 @@ PAGE 2 - FLIGHT
   }
 
   PROPS
-  flight_id
+  flightData
 
   METHODS
-  componentDidMount // built-in React method where we can call axios to get the flight details
+  fetchReservations // we can call this in the constructor() as we did with fetchSecrets
 
 <SeatingChart />
   JSX
