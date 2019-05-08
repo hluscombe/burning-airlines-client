@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.seating-chart-heading {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.seating-chart-row-names {
+  display: flex;
+  justify-content: center;
+}
+
+.seat:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.plane {
+  display: flex;
+  justify-content: center;
+}

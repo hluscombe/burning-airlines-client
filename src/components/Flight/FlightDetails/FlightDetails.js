@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./FlightDetails.css";
 import axios from "axios";
+import SeatingChart from "../SeatingChart/SeatingChart";
+import "./FlightDetails.css";
 
 class FlightDetails extends Component {
   constructor() {
@@ -34,9 +34,6 @@ class FlightDetails extends Component {
     return (
       <div>
         <h1>Flight Details</h1>
-        <Link to="/flights/">Flights</Link>
-        &nbsp;
-        <Link to="/searchflights/"> SearchFlights</Link>
         <h3>
           <span className="flight-details-heading">{localDate}</span>
           <span className="flight-details-heading">
@@ -47,6 +44,7 @@ class FlightDetails extends Component {
             {this.state.destination}
           </span>
         </h3>
+        <SeatingChart />
       </div>
     );
   }
