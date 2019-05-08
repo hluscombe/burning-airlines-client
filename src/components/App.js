@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchFlight from './SearchFlight/SearchFlight.js'
+import SearchFlight from './Search/SearchFlight/SearchFlight.js'
 
 function App() {
   return (
