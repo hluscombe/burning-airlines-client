@@ -1,5 +1,4 @@
 import React from "react";
-// to save headaches the hash router is preferred to BrowserRouter
 import { HashRouter as Router, Route } from "react-router-dom";
 
 import SearchFlights from "./components/Search/SearchFlights/SearchFlights";
