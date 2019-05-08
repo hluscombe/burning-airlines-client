@@ -20,6 +20,10 @@ components/
     Seat/
       Seat.js
       Seat.css
+    ConfirmSeat/
+      ConfirmSeat.js
+      ConfirmSeat.css
+
 
 PAGE 0 - APP
   JSX
@@ -29,13 +33,6 @@ PAGE 0 - APP
   </nav>
   <h1>Airline Name</h1>
   <a>Search Flights</a> // probably not needed initially (we just always show the search)
-
-  STATE
-  currentPage: "search" // optional if we don't use react-router - might be easier to start with this and move to react-router if we have time
-
-  METHOD
-  _setCurrentPage // calls setState to set current page to either "search" or "flight_id" adn we conditionally render Search or Flight
-
 
 PAGE 1 - SEARCH
 <SearchFlights />
@@ -59,7 +56,7 @@ PAGE 1 - SEARCH
                      // }
 
   PROPS
-  _setCurrentPage // will be on-passed to <Results />
+  none
 
   METHODS
   _handleChange // will handle from and to changes and setState of fromValue and toValue
@@ -84,10 +81,9 @@ PAGE 1 - SEARCH
 
   PROPS
     searchResults // array of objects passed down from <Search />
-    _setCurrentPage // method to change the view
 
   METHODS
-    _handleSelectFlight // calls _setCurrentPage("flight_id") which hides the Search page and renders the Flight page
+    _handleSelectFlight // might not be needed depending on how react-router operates
 
 
 PAGE 2 - FLIGHT
@@ -126,10 +122,6 @@ PAGE 2 - FLIGHT
     <Seat />
     ...
   </div>
-  <div> // this may need to be its own component
-    <p>21 B</p>
-    <button>Select Seat</button>
-  </div>
 
   STATE
   selectedSeat: { row: "21", column: "2" }
@@ -147,3 +139,14 @@ PAGE 2 - FLIGHT
 
   PROPS
   selectedSeat // if seat is reserved show user_name else show "avail" - if selected then show "X"
+
+<ConfirmSeat />
+  JSX
+  <div>
+    <p>21 B</p>
+    <button>Select Seat</button>
+  </div>
+
+  PROPS
+  selectedSeat // data to be displayed
+  _handleSelectSeat
