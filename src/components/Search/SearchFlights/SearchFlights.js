@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import Results from "../Results/Results";
 
 class SearchFlights extends Component {
   constructor() {
@@ -35,9 +35,16 @@ class SearchFlights extends Component {
     e.preventDefault();
     const currentDate = new Date().getTime();
     this.setState({ currentDate });
-    axios
-      .get("http://localhost:3000/flights.json")
-      .then(results => console.log(results.data));
+    axios.get("http://localhost:3000/flights.json").then(results => {
+      const searchResults = results.data.filter(result => {
+        return (
+          result.origin === this.state.fromValue &&
+          result.destination === this.state.toValue &&
+          result.date > this.state.currentDate
+        );
+      });
+      this.setState({ searchResults });
+    });
   }
 
   renderDestinations() {
@@ -54,9 +61,6 @@ class SearchFlights extends Component {
     return (
       <div>
         <h1>Search for flights</h1>
-        <Link to="/flights/">
-          Flight Details(this may need props and definitely needs work)
-        </Link>
         <form onSubmit={this._handleSubmit}>
           <select onChange={this._handleChangeFrom}>
             {this.renderDestinations()}
@@ -67,6 +71,9 @@ class SearchFlights extends Component {
           <button>Cancel</button>
           <input type="submit" value="Search" />
         </form>
+        <>
+          <Results searchResults={this.state.searchResults} />
+        </>
       </div>
     );
   }
