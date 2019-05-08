@@ -35,15 +35,34 @@ class SearchFlights extends Component {
     e.preventDefault();
     const currentDate = new Date().getTime();
     this.setState({ currentDate });
+
+    const customResults = [{
+      date: 1557187200034, // if we use milliseconds it's easy to arrange dates
+      flightNumber: 23, // probably the flight_id?
+      from: "Melbourne", // not sure if we store these front end or create another table?
+      to: "Sydney", // not sure if we store these front end or create another table?
+      airplane: "747" // might need to be :airplane_id and we get the :name from that?
+    },
+    {
+      date: 1557187200038, // if we use milliseconds it's easy to arrange dates
+      flightNumber: 26, // probably the flight_id?
+      from: "Paris", // not sure if we store these front end or create another table?
+      to: "Tokyo", // not sure if we store these front end or create another table?
+      airplane: "757" // might need to be :airplane_id and we get the :name from that?
+    }];
+
     axios.get("http://localhost:3000/flights.json").then(results => {
-      const searchResults = results.data.filter(result => {
-        return (
-          result.origin === this.state.fromValue &&
-          result.destination === this.state.toValue &&
-          result.date > this.state.currentDate
-        );
+
+      const searchResults = results.data.map((flight) => {
+        return {
+          date: flight.date,
+          flightNumber: flight.flight_number,
+          from: flight.origin,
+          to: flight.destination,
+          airplane: flight.airplane.model
+        }
       });
-      this.setState({ searchResults });
+      this.setState({ searchResults: searchResults });
     });
   }
 
