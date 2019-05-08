@@ -1,10 +1,12 @@
 import React from 'react';
-import SearchFlight from './SearchFlight/SearchFlight.js'
+import SearchFlight from './Search/SearchFlight/SearchFlight.js'
+import FlightsDetails from './Flight/FlightsDetails/FlightsDetails.js'
 
 function App() {
   return (
     <div className="App">
       <SearchFlight />
+      <FlightsDetails />
     </div>
   );
 }
