@@ -5,7 +5,7 @@ This is an airlines reservation system project.
 ---
 
 ## Wireframe
-<img width="579" alt="687474703a2f2f692e696d6775722e636f6d2f586132444e72722e706e67" src="https://user-images.githubusercontent.com/33978352/57339080-599ab680-7173-11e9-8207-adcccf4f0d0d.png">
+<img width="894" alt="Screen Shot 2019-05-08 at 11 17 28" src="https://user-images.githubusercontent.com/33978352/57342723-953d7c80-7183-11e9-86aa-83e52192aac5.png">
 
 ## Models
 
