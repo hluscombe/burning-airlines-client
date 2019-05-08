@@ -67,8 +67,8 @@ PAGE 1 - SEARCH
 
 <Results />
   JSX
-  <h2>Flight Search Results</h2>
   <div className="grid">
+    <h2>Flight Search Results</h2>
     <p>Date</p>
     <a>Flight</a>
     <p>From</p>

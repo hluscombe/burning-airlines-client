@@ -7,8 +7,7 @@ class FlightDetails extends Component {
     return (
       <div>
         <h1>Details Coming soon</h1>
-        <Link to='/flights/'>Flights(this may need props and definitely needs work)</Link>
-        <Link to='/searchflights/'> SearchFlights(this may need props and definitely needs work)</Link>
+        <Link to='/searchflights/'> Search Flights(this may need props and definitely needs work)</Link>
       </div>
     );
   }
