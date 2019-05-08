@@ -2,15 +2,15 @@ import React from 'react'
 // to save headaches the hash router is preferred to BrowserRouter
 import { HashRouter as Router, Route } from 'react-router-dom';
 
-import SearchFlights from './components/SearchFlights'
-import Flight from './components/Flight'
+import SearchFlights from './components/Search/SearchFlights/SearchFlights'
+import FlightDetails from './components/Flight/FlightDetails/FlightDetails'
 
 // Not a functional component
 const Routes = (
   <Router>
     <div>
-      <Route exact path="/" component={ SearchFlights } />
-      <Route path="/flights/:name" component={ FlightsDetails } />
+      <Route exact path="/searchflights" component={ SearchFlights } />
+      <Route exact path="/flight/:name" component={ FlightDetails } />
     </div>
   </Router>
 );
