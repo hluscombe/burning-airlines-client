@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Burning Airlines
 
-## Available Scripts
+This is an airlines reservation system project.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Wireframe
+<img width="579" alt="687474703a2f2f692e696d6775722e636f6d2f586132444e72722e706e67" src="https://user-images.githubusercontent.com/33978352/57339080-599ab680-7173-11e9-8207-adcccf4f0d0d.png">
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Models
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+There are models for Airplane, Flight, User, and Reservation.
 
-### `npm test`
+An Airplane has many Flights and a Flight belongs to an Airplane.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A User has many Reservations and a Reservation belongs to a User.
 
-### `npm run build`
+A Flight has many Reservations and a Reservation belongs to a Flight.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Reservation table is a join table between Users and Flights, which have a many-to-many relationship through Reservations.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The Airplane model has rows and columns to determine the configuration of the plane; the Airplane model has a row and a column for a particular seat.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Tools
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Rails
+* React
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+A task tracker:
+  * [Trello: back_end](https://trello.com/b/ZO5I2g4T/burning-airlines-backend)
+  * [Trello: front_end](https://trello.com/b/2EePjWEP/burning-airlines-frontend)
