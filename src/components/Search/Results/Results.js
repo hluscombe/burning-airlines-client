@@ -30,7 +30,7 @@ class Results extends Component {
         <th>Flight Model:</th>
       </thead>
       <tbody>
-        {searchResults.map(function(data, key) {
+        {this.props.searchResults.map(function(data, key) {
           const date = new Date(Number(data.date));
           const localDate = `${date.getDate()} / ${date.getMonth() +
             1} / ${date.getFullYear() - 2000}`;
