@@ -1,14 +1,52 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./FlightDetails.css";
+import axios from "axios";
 
 class FlightDetails extends Component {
+  constructor() {
+    super();
+    this.state = { date: 0 };
+  }
+
+  fetchFlight() {
+    axios.get("http://localhost:3000/flights.json").then(results => {
+      const selectedFlight = results.data.filter(
+        result => result.id == this.props.match.params.name
+      );
+      const { flight_number, date, origin, destination } = selectedFlight[0];
+      this.setState({ flight_number, date, origin, destination });
+    });
+  }
+
+  componentDidMount() {
+    this.fetchFlight();
+  }
+
+  componentWillReceiveProps() {
+    this.fetchFlight();
+  }
+
   render() {
+    const date = new Date(Number(this.state.date));
+    const localDate = `${date.getDate()} / ${date.getMonth() +
+      1} / ${date.getFullYear() - 2000}`;
     return (
       <div>
-        <h1>Details Coming soon</h1>
-        <Link to='/flights/'>Flights(this may need props and definitely needs work)</Link>
-        <Link to='/searchflights/'> SearchFlights(this may need props and definitely needs work)</Link>
+        <h1>Flight Details</h1>
+        <Link to="/flights/">Flights</Link>
+        &nbsp;
+        <Link to="/searchflights/"> SearchFlights</Link>
+        <h3>
+          <span className="flight-details-heading">{localDate}</span>
+          <span className="flight-details-heading">
+            Flight {this.state.flight_number}
+          </span>
+          <span className="flight-details-heading">{this.state.origin}</span>
+          <span className="flight-details-heading">
+            {this.state.destination}
+          </span>
+        </h3>
       </div>
     );
   }
