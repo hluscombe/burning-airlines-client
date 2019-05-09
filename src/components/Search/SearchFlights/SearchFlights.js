@@ -51,7 +51,7 @@ class SearchFlights extends Component {
       airplane: "757" // might need to be :airplane_id and we get the :name from that?
     }];
 
-    axios.get("http://localhost:3000/flights.json").then(results => {
+    axios.get("https://burning-airlines-sei31.herokuapp.com/flights.json").then(results => {
 
       const searchResults = results.data.map((flight) => {
         return {

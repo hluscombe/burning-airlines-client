@@ -10,7 +10,7 @@ class FlightDetails extends Component {
   }
 
   fetchFlight() {
-    axios.get("http://localhost:3000/flights.json").then(results => {
+    axios.get("https://burning-airlines-sei31.herokuapp.com/flights.json").then(results => {
       const selectedFlight = results.data.filter(
         result => result.id == this.props.match.params.name
       );

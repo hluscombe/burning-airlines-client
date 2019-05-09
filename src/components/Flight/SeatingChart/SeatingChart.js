@@ -104,15 +104,25 @@ class SeatingChart extends Component {
         user_id: 0,
         column: 0,
         row: 0
-      }]
+      }],
+      users: {
+        id: 0,
+        name: '',
+      }
     };
-
     this._handleSeatClick = this._handleSeatClick.bind(this);
-    const getData = () => {axios.get("http://localhost:3000/airplanes.json").then((result) => this.setState({airplane: result.data[0]}))
+
+    const getUser = () => {axios.get("https://burning-airlines-sei31.herokuapp.com/users.json").then(users => {
+      this.setState({users: users.data})
+      })
+    }
+    getUser();
+
+    const getData = () => {axios.get("https://burning-airlines-sei31.herokuapp.com/airplanes.json").then((result) => this.setState({airplane: result.data[0]}))
     }
     getData();
 
-    const getRes = () => {axios.get("http://localhost:3000/reservations.json").then((result) =>
+    const getRes = () => {axios.get("https://burning-airlines-sei31.herokuapp.com/reservations.json").then((result) =>
     this.setState({reservations: result.data}),
       setTimeout( getRes, 2000)
     )}
@@ -154,6 +164,7 @@ class SeatingChart extends Component {
   renderReservations() {
     return this.state.reservations.map(reservation => {
       const { id, column, row, user_id } = reservation;
+
       return (
         <div
           key={id}
@@ -172,7 +183,7 @@ class SeatingChart extends Component {
           data-row={row}
           onClick={this._handleSeatClick}
         >
-          {user_id}
+         {user_id}
         </div>
       );
     });

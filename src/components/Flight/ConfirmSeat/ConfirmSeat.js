@@ -15,7 +15,7 @@ class ConfirmSeat extends Component {
 
   _handleClick() {
     const {activeRow, activeColumn, flightNumber} = this.props
-    axios.post("http://localhost:3000/reservations.json",
+    axios.post("https://burning-airlines-sei31.herokuapp.com/reservations.json",
     {
     "user_id":1,
     "flight_id": flightNumber,
