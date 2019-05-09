@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hluscombe/burning-airlines-client/static/css/main.337f9cb5.chunk.css",
+    "main.js": "/hluscombe/burning-airlines-client/static/js/main.ce1a564f.chunk.js",
+    "main.js.map": "/hluscombe/burning-airlines-client/static/js/main.ce1a564f.chunk.js.map",
+    "runtime~main.js": "/hluscombe/burning-airlines-client/static/js/runtime~main.7f97d02e.js",
+    "runtime~main.js.map": "/hluscombe/burning-airlines-client/static/js/runtime~main.7f97d02e.js.map",
+    "static/js/2.0cb37d3b.chunk.js": "/hluscombe/burning-airlines-client/static/js/2.0cb37d3b.chunk.js",
+    "static/js/2.0cb37d3b.chunk.js.map": "/hluscombe/burning-airlines-client/static/js/2.0cb37d3b.chunk.js.map",
+    "index.html": "/hluscombe/burning-airlines-client/index.html",
+    "precache-manifest.bee7053635e19423bce486dcb940c196.js": "/hluscombe/burning-airlines-client/precache-manifest.bee7053635e19423bce486dcb940c196.js",
+    "service-worker.js": "/hluscombe/burning-airlines-client/service-worker.js",
+    "static/css/main.337f9cb5.chunk.css.map": "/hluscombe/burning-airlines-client/static/css/main.337f9cb5.chunk.css.map"
+  }
+}
