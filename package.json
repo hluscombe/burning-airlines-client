@@ -1,6 +1,6 @@
 {
   "name": "burning-airlines-client",
-  "homepage":"https://github.com/hluscombe/burning-airlines-client"
+  "homepage":"https://github.com/hluscombe/burning-airlines-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
