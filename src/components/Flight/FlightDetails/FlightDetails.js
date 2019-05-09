@@ -44,7 +44,9 @@ class FlightDetails extends Component {
             {this.state.destination}
           </span>
         </h3>
-        <SeatingChart />
+        <SeatingChart
+          flightNumber={this.props.match.params.name}
+        />
       </div>
     );
   }

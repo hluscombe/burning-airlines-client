@@ -71,9 +71,7 @@ class SearchFlights extends Component {
           <button>Cancel</button>
           <input type="submit" value="Search" />
         </form>
-        <>
-          <Results searchResults={this.state.searchResults} />
-        </>
+        <Results searchResults={this.state.searchResults} />
       </div>
     );
   }

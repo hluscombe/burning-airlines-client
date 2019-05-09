@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import Seat from "../Seat/Seat.js";
+import ConfirmSeat from '../ConfirmSeat/ConfirmSeat'
 import axios from "axios";
 import "./SeatingChart.css";
+
 
 const reservations = [
   {
@@ -113,20 +116,16 @@ class SeatingChart extends Component {
     return seats.map((seat, index) => {
       const rowVal = Math.ceil((index + 1) / column);
       const colVal = index + 1 - (rowVal - 1) * column;
-      const activeColor =
-        activeRow == rowVal && activeColumn == colVal ? "#ff0000" : "";
+      const activeSeat =
+        activeRow == rowVal && activeColumn == colVal ? true : false;
       return (
-        <div
+        <Seat
           key={index * Math.random()}
           className="seat"
-          style={{
-            border: "1px solid black",
-            transition: "all .3s",
-            backgroundColor: activeColor
-          }}
           id={index}
-          data-column={colVal}
-          data-row={rowVal}
+          dataColumn={colVal}
+          dataRow={rowVal}
+          activeSeat={activeSeat}
           onClick={this._handleSeatClick}
         />
       );
@@ -161,6 +160,7 @@ class SeatingChart extends Component {
   }
 
   render() {
+    const { activeRow, activeColumn } = this.state;
     return (
       <>
         <h3 className="seating-chart-heading">Select A Seat</h3>
@@ -179,6 +179,7 @@ class SeatingChart extends Component {
             }}
           >
             {this.renderSeats()}
+
           </div>
           <div
             style={{
@@ -196,6 +197,11 @@ class SeatingChart extends Component {
             {this.renderReservations()}
           </div>
         </div>
+        <ConfirmSeat
+          activeRow={ activeRow }
+          activeColumn={ activeColumn }
+          flightNumber={ this.props.flightNumber }
+        />
       </>
     );
   }
