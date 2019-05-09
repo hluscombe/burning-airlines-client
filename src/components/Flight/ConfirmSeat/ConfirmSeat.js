@@ -6,6 +6,11 @@ class ConfirmSeat extends Component {
     super();
     this.state = { isBooked: false }
     this._handleClick = this._handleClick.bind(this)
+    this.toggleConfirm = this.toggleConfirm.bind(this)
+  }
+
+  toggleConfirm() {
+    this.setState({ isBooked: !this.state.isBooked })
   }
 
   _handleClick() {
@@ -16,17 +21,35 @@ class ConfirmSeat extends Component {
     "flight_id": flightNumber,
     "row": activeRow,
     "column":`${activeColumn}`
-  }).then(res => this.setState({ isBooked: !this.state.isBooked }))
+  }).then(res => this.toggleConfirm())
   }
 
-  render() {
+
+  renderConfirm() {
     const {activeRow, activeColumn} = this.props
     return (
       <>
-      <p>Confirm Seat: </p>
-      <p>{activeRow}{activeColumn}</p>
-      <button onClick={ this._handleClick }>Book Now!</button>
+        <p>Confirm Seat: </p>
+        <p>{activeRow}{activeColumn}</p>
+        <button onClick={ this._handleClick }>Book Now!</button>
       </>
+    )
+  }
+
+  renderMsg() {
+    return (
+      <>
+        <p>Congratulations</p>
+        <button onClick={ this.toggleConfirm }>Book another seat</button>
+      </>
+    )
+  }
+
+  render() {
+
+    return (
+      this.state.isBooked ? <>{this.renderMsg()}</> : <>{this.renderConfirm()}</>
+
     )
   }
 }
