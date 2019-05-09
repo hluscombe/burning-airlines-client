@@ -4,91 +4,6 @@ import ConfirmSeat from '../ConfirmSeat/ConfirmSeat'
 import axios from "axios";
 import "./SeatingChart.css";
 
-
-// const reservations = [
-//   {
-//     id: 1,
-//     user_id: 1,
-//     flight_id: 1,
-//     row: 1,
-//     column: "1",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 2,
-//     user_id: 2,
-//     flight_id: 1,
-//     row: 3,
-//     column: "2",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 3,
-//     user_id: 3,
-//     flight_id: 1,
-//     row: 4,
-//     column: "5",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 4,
-//     user_id: 4,
-//     flight_id: 1,
-//     row: 5,
-//     column: "3",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 5,
-//     user_id: 5,
-//     flight_id: 1,
-//     row: 6,
-//     column: "4",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 6,
-//     user_id: 6,
-//     flight_id: 1,
-//     row: 7,
-//     column: "6",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 7,
-//     user_id: 7,
-//     flight_id: 1,
-//     row: 8,
-//     column: "5",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   },
-//   {
-//     id: 8,
-//     user_id: 8,
-//     flight_id: 1,
-//     row: 9,
-//     column: "1",
-//     created_at: "2019-05-08T01:10:21.957Z",
-//     updated_at: "2019-05-08T01:10:21.957Z"
-//   }
-// ];
-
-// const airplane = {
-//   id: 1,
-//   model: 747,
-//   row: 54,
-//   column: "6",
-//   created_at: "2019-05-08T00:43:26.050Z",
-//   updated_at: "2019-05-08T00:43:26.050Z"
-// };
-
 class SeatingChart extends Component {
   constructor() {
     super();
@@ -101,21 +16,23 @@ class SeatingChart extends Component {
       },
       reservations: [{
         id: 0,
-        user_id: 0,
+        user_id: 3,
         column: 0,
         row: 0
       }],
-      users: {
-        id: 0,
-        name: '',
+      userNames: {
+        0: ""
       }
     };
     this._handleSeatClick = this._handleSeatClick.bind(this);
 
-    const getUser = () => {axios.get("https://burning-airlines-sei31.herokuapp.com/users.json").then(users => {
-      this.setState({users: users.data})
-      })
-    }
+    const getUser = () => axios.get("https://burning-airlines-sei31.herokuapp.com/users.json").then(users => {
+      let userNames = {};
+      users.data.forEach(user => {
+        userNames = { ...userNames, [user.id]: user.name }
+      });
+      this.setState({userNames});
+    });
     getUser();
 
     const getData = () => {axios.get("https://burning-airlines-sei31.herokuapp.com/airplanes.json").then((result) => this.setState({airplane: result.data[0]}))
@@ -161,10 +78,10 @@ class SeatingChart extends Component {
     });
   }
 
+
   renderReservations() {
     return this.state.reservations.map(reservation => {
       const { id, column, row, user_id } = reservation;
-
       return (
         <div
           key={id}
@@ -183,7 +100,7 @@ class SeatingChart extends Component {
           data-row={row}
           onClick={this._handleSeatClick}
         >
-         {user_id}
+         {this.state.userNames[user_id]}
         </div>
       );
     });
